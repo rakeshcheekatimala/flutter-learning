@@ -9,18 +9,45 @@ void main() {
 // everything in flutter in a widget , we need to create our widget
 // to create a widget , create a class that extends StatelessWidget or StatefulWidget
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+ 
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return  MyAppState();
+  }
+
+}
+
+// this tells flutter this state belongs to MyApp
+class MyAppState extends State<MyApp> {
   // This will be called by flutter to draw or render the widget on the screen
   // BuildContext context is a object that will be passed by flutter which holds the meta data about the overall application and widgetTree
-
+  var questionIndex = 0;
+  void answerQuestionHandler() {
+    // this will trigger the re-render of the application
+    setState((){
+      questionIndex = questionIndex+1;
+    });
+    
+    print(questionIndex);
+  }
   @override
   Widget build(BuildContext context) {
+    var questions = ['What\'s your favorite song?','What\'s your favorite sport','What\'s your favorite color'];
+    
     //Scaffhold gives you a base design and structure that gives the colorscheme which looks like a mobileWidget
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(title: Text('Hello from MyApp')),
-      body: Column(children: [Text('First Question1'),RaisedButton(onPressed: null,child:Text('Answer 1')),RaisedButton(onPressed: null,child:Text('Answer 2'))],)
-    ));
+            appBar: AppBar(title: Text('Hello from MyApp')),
+            body: Column(
+              children: [
+                Text(questions[questionIndex]),
+                RaisedButton(onPressed: answerQuestionHandler, child: Text('Answer 1')),
+                RaisedButton(onPressed: answerQuestionHandler, child: Text('Answer 2')),
+                RaisedButton(onPressed: answerQuestionHandler, child: Text('Answer 3'))
+              ],
+            )));
     // home is the core widget will be mounted on the screen, this is called named parameters to the constructor
   }
 }
