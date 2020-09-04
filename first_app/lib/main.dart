@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(title: Text('Hello from MyApp')),
-      body: Text('This is my default text'),
+      body: Column(children: [Text('First Question1'),RaisedButton(onPressed: null,child:Text('Answer 1')),RaisedButton(onPressed: null,child:Text('Answer 2'))],)
     ));
     // home is the core widget will be mounted on the screen, this is called named parameters to the constructor
   }
