@@ -2,19 +2,25 @@ import 'package:flutter/material.dart'; // It has lot of built in widgets , it h
 
 //This is the funciton that gets executed when the app starts
 void main() {
-  runApp(MyApp()); 
+  runApp(MyApp());
   // once this is called build method of MyApp will be called and the widget returned from MyApp will be rendered on the screen
 }
 
 // everything in flutter in a widget , we need to create our widget
-// to create a widget , create a class that extends StatelessWidget
+// to create a widget , create a class that extends StatelessWidget or StatefulWidget
 
 class MyApp extends StatelessWidget {
+  // This will be called by flutter to draw or render the widget on the screen
+  // BuildContext context is a object that will be passed by flutter which holds the meta data about the overall application and widgetTree
 
-  // this will be called by flutter to draw or render the widget on the screen
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Text("Hello from My App Widget"));
-    // home is the core widget will be mounted on the screen
+    //Scaffhold gives you a base design and structure that gives the colorscheme which looks like a mobileWidget
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(title: Text('Hello from MyApp')),
+      body: Text('This is my default text'),
+    ));
+    // home is the core widget will be mounted on the screen, this is called named parameters to the constructor
   }
-
 }
