@@ -6,7 +6,7 @@ void main() {
   runApp(MyApp());
   // once this is called build method of MyApp will be called and the widget returned from MyApp will be rendered on the screen
 }
-ise// everything in flutter in a widget , we need to create our widget
+// everything in flutter in a widget , we need to create our widget
 // to create a widget , create a class that extends StatelessWidget or StatefulWidget
 
 class MyApp extends StatefulWidget {
