@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // It has lot of built in widgets , it has bas
 import './question.dart';
+import './answer.dart';
 
 //This is the funciton that gets executed when the app starts
 void main() {
@@ -37,9 +38,18 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your favorite song?',
-      'What\'s your favorite sport',
-      'What\'s your favorite color'
+      {
+        'questionText': 'What\'s your favorite color',
+        'answers': ['Cyan', 'Aquamarine', 'Orange', 'DeepPink']
+      },
+      {
+        'questionText': 'What\'s your favorite song?',
+        'answers': ['Lonely', '50 Cents', 'Summer Time', 'One Love']
+      },
+      {
+        'questionText': 'What\'s your favorite sport',
+        'answers': ['Cricket', 'Tennis', 'Table Tennis', 'Archery']
+      }
     ];
 
     //Scaffhold gives you a base design and structure that gives the colorscheme which looks like a mobileWidget
@@ -48,13 +58,10 @@ class _MyAppState extends State<MyApp> {
             appBar: AppBar(title: Text('Hello from MyApp')),
             body: Column(
               children: [
-                Question(questions[_questionIndex]),
-                RaisedButton(
-                    onPressed: answerQuestionHandler, child: Text('Answer 1')),
-                RaisedButton(
-                    onPressed: answerQuestionHandler, child: Text('Answer 2')),
-                RaisedButton(
-                    onPressed: answerQuestionHandler, child: Text('Answer 3'))
+                Question(questions[_questionIndex]['questionText']),
+                ...(questions[_questionIndex]['answers'] as List).map((answer) {
+                  return Answer(answerQuestionHandler, answer);
+                }).toList()
               ],
             )));
     // home is the core widget will be mounted on the screen, this is called named parameters to the constructor
