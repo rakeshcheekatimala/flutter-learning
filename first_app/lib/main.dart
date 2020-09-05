@@ -25,27 +25,50 @@ class _MyAppState extends State<MyApp> {
   // This will be called by flutter to draw or render the widget on the screen
   // BuildContext context is a object that will be passed by flutter which holds the meta data about the overall application and widgetTree
   var _questionIndex = 0; // make this as private property
-
+  var _totalScore = 0;
   final _questions = const [
     {
       'questionText': 'What\'s your favorite color',
-      'answers': ['Cyan', 'Aquamarine', 'Orange', 'DeepPink']
+      'answers': [
+        {'text': 'Cyan', 'score': 10},
+        {'text': 'Aquamarine', 'score': 5},
+        {'text': 'Orange', 'score': 2},
+        {'text': 'DeepPink', 'score': 8},
+      ]
     },
     {
       'questionText': 'What\'s your favorite song?',
-      'answers': ['Lonely', '50 Cents', 'Summer Time', 'One Love']
+      'answers': [
+        {'text': 'Lonely', 'score': 10},
+        {'text': '50 Cents', 'score': 2},
+        {'text': 'Summer Time', 'score': 1},
+        {'text': 'One Love', 'score': 3},
+      ]
     },
     {
       'questionText': 'What\'s your favorite sport',
-      'answers': ['Cricket', 'Tennis', 'Table Tennis', 'Archery']
+      'answers': [
+        {'text': 'Cricket', 'score': 2},
+        {'text': 'Tennis', 'score': 7},
+        {'text': 'Table Tennis', 'score': 3},
+        {'text': 'Archery', 'score': 1},
+      ]
     }
   ];
 
-  void answerQuestionHandler() {
+  void restartQuiz() {
+    setState(() {
+      _totalScore = 0;
+      _questionIndex = 0;
+    });
+  }
+
+  void answerQuestionHandler(int score) {
     // this will trigger the re-render of the application
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
+    _totalScore += score;
     if (_questionIndex < _questions.length) {
       print('We have more questions , we are currently at');
       print(_questionIndex);
@@ -66,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                     questionIndex: _questionIndex,
                     questions: _questions,
                   )
-                : Result()));
+                : Result(_totalScore, restartQuiz)));
     // home is the core widget will be mounted on the screen, this is called named parameters to the constructor
   }
 }
