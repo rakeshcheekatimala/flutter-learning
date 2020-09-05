@@ -30,9 +30,11 @@ Note: Make your your Virtual Devices is running
 * Click on Android Studio and click on Configure
 * Choose AVD Manager, create a VirtualDevice.
 * I have created one for tablet which is Nexus 9 and download from Release Name (i have choosen Oreo)
-* 
+* Click on run to start this virtual device
+
 
 # How to run from the app from VSCode in Debug mode
 
 * Since we have flutter extension installed, Click on Run Menu
 * Click on Start Debugging and choose Dart/Flutter
+* You will be able to run your app in debug mode
