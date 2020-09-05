@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'; // It has lot of built in widgets , it has bas
-import './question.dart';
-import './answer.dart';
+import './result.dart';
+import './quiz.dart';
 
 //This is the funciton that gets executed when the app starts
 void main() {
@@ -26,44 +26,47 @@ class _MyAppState extends State<MyApp> {
   // BuildContext context is a object that will be passed by flutter which holds the meta data about the overall application and widgetTree
   var _questionIndex = 0; // make this as private property
 
+  final _questions = const [
+    {
+      'questionText': 'What\'s your favorite color',
+      'answers': ['Cyan', 'Aquamarine', 'Orange', 'DeepPink']
+    },
+    {
+      'questionText': 'What\'s your favorite song?',
+      'answers': ['Lonely', '50 Cents', 'Summer Time', 'One Love']
+    },
+    {
+      'questionText': 'What\'s your favorite sport',
+      'answers': ['Cricket', 'Tennis', 'Table Tennis', 'Archery']
+    }
+  ];
+
   void answerQuestionHandler() {
     // this will trigger the re-render of the application
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
-
-    print(_questionIndex);
+    if (_questionIndex < _questions.length) {
+      print('We have more questions , we are currently at');
+      print(_questionIndex);
+    } else {
+      print("You have answered all the questions");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': 'What\'s your favorite color',
-        'answers': ['Cyan', 'Aquamarine', 'Orange', 'DeepPink']
-      },
-      {
-        'questionText': 'What\'s your favorite song?',
-        'answers': ['Lonely', '50 Cents', 'Summer Time', 'One Love']
-      },
-      {
-        'questionText': 'What\'s your favorite sport',
-        'answers': ['Cricket', 'Tennis', 'Table Tennis', 'Archery']
-      }
-    ];
-
     //Scaffhold gives you a base design and structure that gives the colorscheme which looks like a mobileWidget
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(title: Text('Hello from MyApp')),
-            body: Column(
-              children: [
-                Question(questions[_questionIndex]['questionText']),
-                ...(questions[_questionIndex]['answers'] as List).map((answer) {
-                  return Answer(answerQuestionHandler, answer);
-                }).toList()
-              ],
-            )));
+            body: _questionIndex < _questions.length
+                ? Quiz(
+                    answerQuestionHandler: answerQuestionHandler,
+                    questionIndex: _questionIndex,
+                    questions: _questions,
+                  )
+                : Result()));
     // home is the core widget will be mounted on the screen, this is called named parameters to the constructor
   }
 }
