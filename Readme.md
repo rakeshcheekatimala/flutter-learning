@@ -38,3 +38,11 @@ Note: Make your your Virtual Devices is running
 * Since we have flutter extension installed, Click on Run Menu
 * Click on Start Debugging and choose Dart/Flutter
 * You will be able to run your app in debug mode
+
+
+# Assignment1:
+
+* Create a new Flutter App with two buttons Reset,Change Text
+* Split App into Two Widgets, ex: Result , Button Controls 
+
+Note: Refer to assignment1 folder for the solution 
