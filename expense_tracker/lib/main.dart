@@ -53,11 +53,19 @@ class MyHomePage extends StatelessWidget {
                   elevation: 5,
                 ),
               ),
-              Container(
-                child: Card(
-                  child: Text('LISTVIEW WIDGET'),
-                ),
-              )
+              Column(
+                  children: transactions.map((tx) {
+                return Card(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                      Container(child: Text(tx.price.toString())),
+                      Column(children: <Widget>[
+                        Text(tx.title),
+                        Text(tx.createdAt.toString())
+                      ])
+                    ]));
+              }).toList())
             ]));
   }
 }
