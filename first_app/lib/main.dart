@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; // It has lot of built in widgets , it has bas
+import 'package:flutter/material.dart'; // It has lot of built in widgets
 import './result.dart';
 import './quiz.dart';
 
@@ -82,7 +82,9 @@ class _MyAppState extends State<MyApp> {
     //Scaffhold gives you a base design and structure that gives the colorscheme which looks like a mobileWidget
     return MaterialApp(
         home: Scaffold(
-            appBar: AppBar(title: Text('Hello from MyApp')),
+            appBar: AppBar(
+              title: Text('Hello from MyApp'),
+            ),
             body: _questionIndex < _questions.length
                 ? Quiz(
                     answerQuestionHandler: answerQuestionHandler,
