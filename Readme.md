@@ -1,5 +1,7 @@
 Getting Started:
 
+#100DaysOfCode : Flutter,Firebase,Firestore examples and demos
+
 # Required Softwares:
  * Android Studio
  * VSCode 
@@ -45,4 +47,4 @@ Note: Make your your Virtual Devices is running
 * Create a new Flutter App with two buttons Reset,Change Text
 * Split App into Two Widgets, ex: Result , Button Controls 
 
-Note: Refer to assignment1 folder for the solution 
+Note: Refer to assignment1 folder for the solution.
