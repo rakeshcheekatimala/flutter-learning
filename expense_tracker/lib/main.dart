@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyHomePage extends StatelessWidget {
         price: 89.99,
         createdAt: DateTime.now()),
     Transaction(
-        id: 'tx2', title: 'Milk', price: 5.99, createdAt: DateTime.now())
+        id: 'tx2', title: 'Milk', price: 15.99, createdAt: DateTime.now())
   ];
 
   @override
@@ -65,7 +66,7 @@ class MyHomePage extends StatelessWidget {
                         border: Border.all(color: Colors.purple, width: 2),
                       ),
                       child: Text(
-                        tx.price.toString(),
+                        '\$ ${tx.price.toString()}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -80,7 +81,9 @@ class MyHomePage extends StatelessWidget {
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          tx.createdAt.toString(),
+                          DateFormat.yMMMMd("en_US")
+                              .add_jm()
+                              .format(tx.createdAt),
                           style: TextStyle(color: Colors.grey),
                         )
                       ])
