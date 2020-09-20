@@ -28,6 +28,8 @@ class MyHomePage extends StatelessWidget {
         id: 'tx2', title: 'Milk', price: 15.99, createdAt: DateTime.now())
   ];
 
+  String title; // this value will store the textfield for titleInput
+  String amount; // this value will store the textfield for amountInput
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -53,6 +55,33 @@ class MyHomePage extends StatelessWidget {
                   child: Text('CHART WIDGET'),
                   elevation: 5,
                 ),
+              ),
+              Card(
+                elevation: 5,
+                child: Container(
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          TextField(
+                            decoration: InputDecoration(labelText: 'Title'),
+                            onChanged: (val) => {title = val},
+                          ),
+                          TextField(
+                            decoration: InputDecoration(labelText: 'Amuount'),
+                            onChanged: (val) => {amount = val},
+                          ),
+                          RaisedButton(
+                            onPressed: () => {print(title + amount)},
+                            child: Text('Add'),
+                            color: Colors.purpleAccent,
+                            padding: EdgeInsets.all(10),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16.0))),
+                          )
+                        ])),
               ),
               Column(
                   children: transactions.map((tx) {
